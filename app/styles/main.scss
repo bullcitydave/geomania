@@ -19,24 +19,26 @@ body {
   background-color: #eee;
   border-radius: 6px;
   padding: 60px;
-  h1 {
-    font-size: 60px;
+  position: relative;
+  h2 {
+    font-size: 30px;
     line-height: 1;
     letter-spacing: -1px;
   }
-  #map-canvas {
+  div[id^=map-canvas] {
         height: 500px;
         margin: 0px;
         padding: 0px
   }
-  #panel {
+  div[id^=panel] {
         position: absolute;
         top: 5px;
         left: 50%;
-        margin-left: -180px;
+        margin-left: -200px;
         z-index: 5;
         background-color: #fff;
         padding: 5px;
         border: 1px solid #999;
+        width: 400px;
   }
 }

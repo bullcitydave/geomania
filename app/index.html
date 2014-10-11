@@ -24,12 +24,22 @@
   <body>
 
     <div class="hero-unit">
-      <h1>Geocoding Exercise</h1>
+      <h2>Geocoding</h2>
       <div id="panel">
         <input id="address" type="textbox" placeholder="Enter address">
-        <input type="button" value="Geocode" onclick="codeAddress()">
+        <input type="button" value="Map It" onclick="codeAddress()">
       </div>
       <div id="map-canvas">
+      </div>
+    </div>
+
+    <div class="hero-unit">
+      <h2>Reverse Geocoding</h2>
+      <div id="panel-reverse">
+         <input id="latlng" type="text" value="40.714224,-73.961452">
+         <input type="button" value="Reverse Geocode" onclick="codeLatLng()">
+      </div>
+      <div id="map-canvas-reverse">
       </div>
     </div>
 
@@ -44,6 +54,7 @@
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/geocode.js"></script>
+        <script src="scripts/geocode_reverse.js"></script>
         <!-- endbuild -->
 </body>
 </html>
