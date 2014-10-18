@@ -41,4 +41,15 @@ body {
         border: 1px solid #999;
         width: 400px;
   }
+  div#zip-result-container {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+
+    p#zip {
+      color: darkred;
+      font-size: 5.0em;
+    }
+  }
 }

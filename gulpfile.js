@@ -1,5 +1,5 @@
 'use strict';
-// generated on 2014-10-11 using generator-tiy-webapp 0.0.8
+// generated on 2014-08-01 using generator-tiy-webapp 0.0.8
 
 // Require your modules
 var gulp = require('gulp');
@@ -9,7 +9,7 @@ var exec = require('child_process').exec;
 var prompt = require('gulp-prompt');
 
 gulp.task('styles', function () {
-  return gulp.src('app/styles/main.scss')
+  return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
     .pipe($.rubySass({
       style: 'compressed',
@@ -43,6 +43,17 @@ gulp.task('extras', function () {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('webfonts', function () {
+  return gulp.src(['app/styles/webfonts/*.*'], {dot: true})
+    .pipe(gulp.dest('dist/styles/webfonts'));
+});
+
+gulp.task('styles_', function () {
+  return gulp.src(['app/styles/*.css'], {dot: true})
+    .pipe(gulp.dest('dist/styles/'));
+});
+
+
 gulp.task('clean', function (cb) {
   rimraf('.tmp', function () {
     rimraf('dist', cb);
@@ -51,7 +62,7 @@ gulp.task('clean', function (cb) {
 
 gulp.task('connect', function () {
   var connect = require('connect');
-  var app = connect()
+  var app = connect.createServer()
     .use(require('connect-livereload')({port: 35729}))
     .use(connect.static('app'))
     .use(connect.static('.tmp'))
@@ -101,7 +112,7 @@ gulp.task('watch', ['connect', 'serve'], function () {
   gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('build', ['html', 'images', 'extras'], function () {
+gulp.task('build', ['html', 'images', 'extras', 'webfonts', 'styles_'], function () {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
@@ -128,6 +139,20 @@ gulp.task('deploy', function() {
     }));
 
 });
+
+///NEW
+
+// var uglify = require('gulp-uglify');
+//
+// gulp.task('compress', function() {
+//   gulp.src(['app/scripts/**/*.js','app/scripts/*.js'])
+//     .pipe(uglify())
+//     .pipe(gulp.dest('dist/scripts/'))
+// });
+
+
+///
+
 
 // Test your app in the browser
 // Needs to be better, but needed something quick

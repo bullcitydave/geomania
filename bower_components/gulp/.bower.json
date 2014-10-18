@@ -1,0 +1,15 @@
+{
+  "name": "gulp",
+  "homepage": "https://github.com/gulpjs/gulp",
+  "version": "3.8.8",
+  "_release": "3.8.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.8.8",
+    "commit": "96780a4238506410807e28d58aab2fa148dc4dcc"
+  },
+  "_source": "git://github.com/gulpjs/gulp.git",
+  "_target": "~3.8.8",
+  "_originalSource": "gulp",
+  "_direct": true
+}

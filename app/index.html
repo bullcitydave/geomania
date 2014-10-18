@@ -9,7 +9,6 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -17,45 +16,42 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="../bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
+
   </head>
   <body>
 
     <div class="hero-unit">
-      <h2>Geocoding</h2>
+      <h2>What's the zip code here?</h2>
       <div id="panel">
-        <input id="address" type="textbox" placeholder="Enter address">
-        <input id="mapit" type="button" value="Map It" >
+        <input id="address" type="textbox" placeholder="Enter an address or location">
+        <input id="mapit" type="button" value="Get the zip code" >
       </div>
       <div id="map-canvas">
       </div>
+      <div id="zip-result-container">
+        <p id="zip"></p>
+      </div>
     </div>
 
-    <div class="hero-unit">
-      <h2>Reverse Geocoding</h2>
-      <div id="panel-reverse">
-         <input id="latlng" type="text" value="40.714224,-73.961452">
-         <input type="button" value="Reverse Geocode" onclick="codeLatLng()">
-      </div>
-      <div id="map-canvas-reverse">
-      </div>
-    </div>
+
+
+
+
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../bower_components/underscore/underscore.js"></script>
-    <script src="../bower_components/backbone/backbone.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/underscore/underscore.js"></script>
+        <script src="../bower_components/backbone/backbone.js"></script>
+        <script src="../bower_components/modernizr/modernizr.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/geocode.js"></script>
-        <script src="scripts/geocode_reverse.js"></script>
+
         <!-- endbuild -->
 </body>
 </html>
