@@ -19,6 +19,8 @@ function codeLatLng() {
   var latlngStr = input.split(',', 2);
   var lat = parseFloat(latlngStr[0]);
   var lng = parseFloat(latlngStr[1]);
+  // var lat = 36.19950329;
+  // var lng = -78.897619;
   var latlng = new google.maps.LatLng(lat, lng);
   geocoderRev.geocode({'latLng': latlng}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {

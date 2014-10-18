@@ -51,13 +51,15 @@ var MapView = Backbone.View.extend ({
 
  events: {
     "mouseover .pet-pic"    : "hoverBox",
-    "click  #mapit"         : "codeAddress"
+    "click  #mapit"         : "codeAddress",
+    "blur   #mapit"         : "codeAddress",
+    "enter #mapit"       : "codeAddressK"
+    // enter isn't working
 
   },
 
  initialize: function() {
      self = this;
-     var marker;
      var latlng = new google.maps.LatLng(35,-96);
      var mapOptions = {
          zoom: 4,
@@ -65,14 +67,32 @@ var MapView = Backbone.View.extend ({
          mapTypeId: 'roadmap'
    }
 
+
+     var styles = [
+                   {
+                	 featureType: "all",
+                     stylers: [
+                       { hue: "#00ffe6" },
+                       { saturation: -20 }
+                     ]
+                   }
+                   ];
+
    self.myMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-   marker = new google.maps.Marker({
+   self.marker = new google.maps.Marker({
        map: self.myMap,
        position: latlng,
        title:"Hello World!",
        visible: true
    });
 
+ },
+
+ codeAddressK: function () {
+   var code = e.which;
+        if(code == 13) {
+          self.codeAddress();
+        }
  },
 
  codeAddress: function () {
@@ -82,15 +102,13 @@ var MapView = Backbone.View.extend ({
    geocoder.geocode( { 'address': address}, function(results, status) {
      if (status == google.maps.GeocoderStatus.OK) {
        self.myMap.setCenter(results[0].geometry.location);
-       var marker = new google.maps.Marker({
-           map: self.myMap,
-           position: results[0].geometry.location
-       });
-     } else {
+       self.marker.setPosition(results[0].geometry.location);
+       }
+     else {
        alert('Geocode was not successful for the following reason: ' + status);
-     }
-   });
+     };
+ });
  }
-});
 
+});
 var mapview = new MapView;
