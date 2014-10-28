@@ -76,6 +76,7 @@ gulp.task('connect', function () {
     .on('listening', function () {
       console.log('Started connect web server on http://localhost:9000');
     });
+
 });
 
 gulp.task('serve', ['connect', 'styles'], function () {
@@ -154,33 +155,33 @@ gulp.task('deploy', function() {
 ///
 
 
-// Test your app in the browser
-// Needs to be better, but needed something quick
-gulp.task('test-server', function() {
-
-  // Open Test Page
-  var connect = require('connect');
-  var app = connect()
-    .use(require('connect-livereload')({port: 35729}))
-    .use(connect.static('test'))
-    .use('/app', connect.static('app'))
-    .use('/bower_components', connect.static('bower_components'))
-    .use(connect.directory('test'));
-
-  require('http').createServer(app)
-    .listen(8000)
-    .on('listening', function () {
-      console.log('Started connect testing server on http://localhost:8000');
-    });
-
-  require('opn')('http://localhost:8000');
-
-  // Watch for changes in either the test/spec folder or app/scripts folder
-  $.livereload.listen();
-
-  gulp.watch([
-    'app/scripts/**/*.js',
-    'test/spec/**/*.js'
-  ]).on('change', $.livereload.changed);
-
-});
+// // Test your app in the browser
+// // Needs to be better, but needed something quick
+// gulp.task('test-server', function() {
+//
+//   // Open Test Page
+//   var connect = require('connect');
+//   var app = connect()
+//     .use(require('connect-livereload')({port: 35729}))
+//     .use(connect.static('test'))
+//     .use('/app', connect.static('app'))
+//     .use('/bower_components', connect.static('bower_components'))
+//     .use(connect.directory('test'));
+//
+//   require('http').createServer(app)
+//     .listen(8000)
+//     .on('listening', function () {
+//       console.log('Started connect testing server on http://localhost:8000');
+//     });
+//
+//   require('opn')('http://localhost:8000');
+//
+//   // Watch for changes in either the test/spec folder or app/scripts folder
+//   $.livereload.listen();
+//
+//   gulp.watch([
+//     'app/scripts/**/*.js',
+//     'test/spec/**/*.js'
+//   ]).on('change', $.livereload.changed);
+//
+// });

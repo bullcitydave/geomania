@@ -25,6 +25,9 @@ body {
     line-height: 1;
     letter-spacing: -1px;
   }
+  h4 {
+    line-height: 32px;
+  }
   div[id^=map-canvas] {
         height: 500px;
         margin: 0px;
@@ -43,12 +46,15 @@ body {
   }
   div#zip-result-container {
     position: absolute;
-    top: 50%;
+    top: 57%;
     width: 100%;
     text-align: center;
+    width: 50%;
+    left: 25%;
+    letter-spacing: 0.55em;
 
     p#zip {
-      color: darkred;
+      color: purple;
       font-size: 5.0em;
     }
   }

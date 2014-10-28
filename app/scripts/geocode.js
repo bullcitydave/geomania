@@ -15,8 +15,14 @@ var MapView = Backbone.View.extend ({
      self = this;
      var latlng = new google.maps.LatLng(35,-96);
      var mapOptions = {
-         zoom: 4,
+         zoom: 3,
          center: latlng,
+         scrollwheel: false,
+         navigationControl: false,
+         mapTypeControl: false,
+         scaleControl: false,
+         draggable: false,
+         zoomControl: false,
          mapTypeId: 'roadmap'
        };
      self.myMap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -55,7 +61,7 @@ var MapView = Backbone.View.extend ({
    geocoder.geocode( { 'address': address}, function(results, status) {
      if (status == google.maps.GeocoderStatus.OK) {
        self.myMap.setCenter(results[0].geometry.location);
-       self.myMap.setZoom(5);
+       self.myMap.setZoom((results[0].address_components.length)+3);
        self.marker.setPosition(results[0].geometry.location);
        self.marker.setVisible(true);
        self.getZip(results[0]);
