@@ -5,7 +5,7 @@ var MapView = Backbone.View.extend ({
  events: {
     "mouseover .pet-pic"    : "hoverBox",
     "click  #mapit"         : "codeAddress",
-    "blur   #address"         : "codeAddress",
+    // "blur   #address"         : "codeAddress",
     "keypress  #address"       : "codeAddressK"
     // enter isn't working
 
@@ -65,6 +65,7 @@ var MapView = Backbone.View.extend ({
        self.marker.setPosition(results[0].geometry.location);
        self.marker.setVisible(true);
        self.getZip(results[0]);
+       self.getCounty(results[0]);
        }
      else {
        alert('Geocode was not successful for the following reason: ' + status);
@@ -87,6 +88,20 @@ var MapView = Backbone.View.extend ({
 		    	alert('Geocode was not successful for the following reason: ' + status);
 		  }
 		});
+ },
+
+ getCounty: function(result) {
+  var countyString = "County";
+   if ((result.formatted_address.indexOf(', LA, USA') !== -1) ||
+       (result.formatted_address.indexOf(', LA 7') !== -1)) {
+        countyString = "Parish";
+      };
+   for (i = 0; i < result.address_components.length; i++) {
+     var addressCompName = result.address_components[i].short_name;
+     if (addressCompName.indexOf(countyString) !== -1) {
+          console.log(addressCompName.substring(0,(addressCompName.indexOf(countyString)-1)));
+        }
+      }
  }
 
 });
